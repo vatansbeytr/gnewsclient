@@ -73,7 +73,8 @@ class NewsClient:
         articles = self.get_news()
         for article in articles:
             print(article['title'])
-            print(article['link'], end='\n\n')
+            print(article['link'])
+            print(article['img'], end='\n\n')
 
     def parse_feed(self, content):
         """
@@ -84,7 +85,8 @@ class NewsClient:
         for entry in feed['entries'][:self.max_results]:
             article = {
                 'title': entry['title'],
-                'link': entry['link']
+                'link': entry['link'],
+                'img': entry['img']
             }
             try:
                 article['media'] = entry['media_content'][0]['url']
